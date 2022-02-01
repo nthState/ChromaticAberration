@@ -1,5 +1,5 @@
 //
-//  ChromaticAberration.swift
+//  MTLTexture+.swift
 //  Chromaticaberration
 //
 //  Copyright © 2022 Chris Davis, https://www.nthState.com

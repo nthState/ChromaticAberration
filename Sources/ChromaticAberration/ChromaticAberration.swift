@@ -42,7 +42,7 @@ public struct ChromaticAberration<V>: ViewModifier where V: View {
     let engine = MetalEngine.instance
     let snapshotImage = view.asImage()
     var texture = snapshotImage.textureFromImage(device: engine.device)
-    engine.apply(newTex: &texture, configuration: configuration)
+    engine.apply(newTex: &texture, configuration: configuration, size: CGSize(width: snapshotImage.cgImage!.width, height: snapshotImage.cgImage!.height))
     let outputImage = texture?.uiImage()
     
     self.imageSize = snapshotImage.size

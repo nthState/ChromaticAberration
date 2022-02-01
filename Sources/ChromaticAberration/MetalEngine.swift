@@ -1,5 +1,5 @@
 //
-//  ChromaticAberration.swift
+//  MetalEngine.swift
 //  Chromaticaberration
 //
 //  Copyright © 2022 Chris Davis, https://www.nthState.com
@@ -12,22 +12,22 @@ import MetalKit
 
 class MetalEngine {
   
-  static var instance = MetalEngine()
+  public static var instance = MetalEngine()
   
   /// Metal function we are using
-  var kernelFunction:MTLFunction?
+  private var kernelFunction:MTLFunction?
   /// Metal device, the GPU
-  var device: MTLDevice!
+  public var device: MTLDevice!
   /// Pipeline
-  var pipelineState: MTLComputePipelineState!
+  private var pipelineState: MTLComputePipelineState!
   /// Library
-  var defaultLibrary: MTLLibrary!
+  private var defaultLibrary: MTLLibrary!
   /// Command queue
-  var commandQueue: MTLCommandQueue!
+  private var commandQueue: MTLCommandQueue!
   /// Threading
-  var threadsPerThreadgroup:MTLSize!
+  private var threadsPerThreadgroup:MTLSize!
   /// Thread Groups
-  var threadgroupsPerGrid: MTLSize!
+  private var threadgroupsPerGrid: MTLSize!
   
   private init() {
     device = MTLCreateSystemDefaultDevice()
@@ -42,14 +42,14 @@ class MetalEngine {
     catch {
       fatalError("Unable to create pipeline state")
     }
-    
-    threadsPerThreadgroup = MTLSizeMake(16, 16, 1)
-    let widthInThreadgroups = (400 + threadsPerThreadgroup.width - 1) / threadsPerThreadgroup.width
-    let heightInThreadgroups = (400 + threadsPerThreadgroup.height - 1) / threadsPerThreadgroup.height
-    threadgroupsPerGrid = MTLSizeMake(widthInThreadgroups, heightInThreadgroups, 1)
   }
   
-  func apply(newTex: inout MTLTexture?, configuration: AberrationConfiguration) {
+  public func apply(newTex: inout MTLTexture?, configuration: AberrationConfiguration, size: CGSize) {
+    
+    threadsPerThreadgroup = MTLSizeMake(16, 16, 1)
+    let widthInThreadgroups = (Int(size.width) + threadsPerThreadgroup.width - 1) / threadsPerThreadgroup.width
+    let heightInThreadgroups = (Int(size.height) + threadsPerThreadgroup.height - 1) / threadsPerThreadgroup.height
+    threadgroupsPerGrid = MTLSizeMake(widthInThreadgroups, heightInThreadgroups, 1)
     
     var rx = Int(configuration.red.x)
     var gx = Int(configuration.green.x)
