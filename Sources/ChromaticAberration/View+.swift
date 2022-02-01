@@ -61,8 +61,12 @@ extension UIView {
 //    format.scale = 2
     
     let renderer = UIGraphicsImageRenderer(bounds: bounds, format: format)
-    return renderer.image { rendererContext in
-      layer.render(in: rendererContext.cgContext)
+//    return renderer.image { rendererContext in
+//      layer.render(in: rendererContext.cgContext)
+//    }
+    
+    return renderer.image { ctx in
+        self.drawHierarchy(in: self.bounds, afterScreenUpdates: true)
     }
   }
 }

@@ -78,7 +78,3 @@ class MetalEngine {
   }
   
 }
-
-struct MySize {
-  var s: SIMD2<Int>
-}
