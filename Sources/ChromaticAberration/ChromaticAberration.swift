@@ -40,7 +40,7 @@ public struct ChromaticAberration<V>: ViewModifier where V: View {
     //try? await Task.sleep(nanoseconds: UInt64(0.032 * Double(NSEC_PER_SEC)))
     sleep(UInt32(0.032))
     let engine = MetalEngine.instance
-    let snapshotImage = view.snapshot()
+    let snapshotImage = view.asImage()
     var texture = snapshotImage.textureFromImage(device: engine.device)
     engine.apply(newTex: &texture, configuration: configuration)
     let outputImage = texture?.uiImage()

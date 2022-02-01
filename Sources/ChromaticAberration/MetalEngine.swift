@@ -1,11 +1,14 @@
 //
-//  File.swift
-//  
+//  ChromaticAberration.swift
+//  Chromaticaberration
 //
-//  Created by Chris Davis on 01/02/2022.
+//  Copyright © 2022 Chris Davis, https://www.nthState.com
+//
+//  See https://github.com/nthState/ChromaticAberration/blob/master/LICENSE for license information.
 //
 
 import Metal
+import MetalKit
 
 class MetalEngine {
   
@@ -28,7 +31,7 @@ class MetalEngine {
   
   private init() {
     device = MTLCreateSystemDefaultDevice()
-    defaultLibrary = device!.makeDefaultLibrary()!
+    defaultLibrary = try! device!.makeDefaultLibrary(bundle: Bundle.module)
     commandQueue = device!.makeCommandQueue()
     
     kernelFunction = defaultLibrary.makeFunction(name: "kernel_chromatic_aberration")
@@ -48,18 +51,25 @@ class MetalEngine {
   
   func apply(newTex: inout MTLTexture?, configuration: AberrationConfiguration) {
     
-    var r = UInt(configuration.red.x)
-    var g = UInt(configuration.green.x)
-    var b = UInt(configuration.blue.x)
+    var rx = Int(configuration.red.x)
+    var gx = Int(configuration.green.x)
+    var bx = Int(configuration.blue.x)
+    
+    var ry = Int(configuration.red.y)
+    var gy = Int(configuration.green.y)
+    var by = Int(configuration.blue.y)
     
     let commandBuffer = commandQueue.makeCommandBuffer()
     let commandEncoder = commandBuffer?.makeComputeCommandEncoder()
     commandEncoder?.setComputePipelineState(pipelineState)
     commandEncoder?.setTexture(newTex, index: 0)
     commandEncoder?.setTexture(newTex, index: 1)
-    commandEncoder?.setBytes(&r, length: MemoryLayout<UInt>.stride, index: 0)
-    commandEncoder?.setBytes(&g, length: MemoryLayout<UInt>.stride, index: 1)
-    commandEncoder?.setBytes(&b, length: MemoryLayout<UInt>.stride, index: 2)
+    commandEncoder?.setBytes(&rx, length: MemoryLayout<Int>.stride, index: 0)
+    commandEncoder?.setBytes(&gx, length: MemoryLayout<Int>.stride, index: 1)
+    commandEncoder?.setBytes(&bx, length: MemoryLayout<Int>.stride, index: 2)
+    commandEncoder?.setBytes(&ry, length: MemoryLayout<Int>.stride, index: 3)
+    commandEncoder?.setBytes(&gy, length: MemoryLayout<Int>.stride, index: 4)
+    commandEncoder?.setBytes(&by, length: MemoryLayout<Int>.stride, index: 5)
     commandEncoder?.dispatchThreadgroups(threadgroupsPerGrid, threadsPerThreadgroup: threadsPerThreadgroup)
     commandEncoder?.endEncoding()
     commandBuffer?.commit();
@@ -67,4 +77,8 @@ class MetalEngine {
     
   }
   
+}
+
+struct MySize {
+  var s: SIMD2<Int>
 }

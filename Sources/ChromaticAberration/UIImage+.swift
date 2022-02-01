@@ -1,8 +1,10 @@
 //
-//  File.swift
-//  
+//  ChromaticAberration.swift
+//  Chromaticaberration
 //
-//  Created by Chris Davis on 01/02/2022.
+//  Copyright © 2022 Chris Davis, https://www.nthState.com
+//
+//  See https://github.com/nthState/ChromaticAberration/blob/master/LICENSE for license information.
 //
 
 import Metal
