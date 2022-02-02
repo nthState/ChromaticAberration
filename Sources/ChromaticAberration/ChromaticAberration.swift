@@ -1,6 +1,6 @@
 //
 //  ChromaticAberration.swift
-//  Chromaticaberration
+//  ChromaticAberration
 //
 //  Copyright © 2022 Chris Davis, https://www.nthState.com
 //
@@ -36,9 +36,7 @@ public struct ChromaticAberration<V>: ViewModifier where V: View {
     self.configuration = AberrationConfiguration(red: red, green: green, blue: blue)
   }
   
-  private func aberratedImage() async -> UIImage? {
-    //try? await Task.sleep(nanoseconds: UInt64(0.032 * Double(NSEC_PER_SEC)))
-    //sleep(UInt32(0.032))
+  internal func createImage() -> UIImage? {
     let engine = MetalEngine.instance
     let snapshotImage = view.asImage()
     var texture = snapshotImage.textureFromImage(device: engine.device)
@@ -48,6 +46,14 @@ public struct ChromaticAberration<V>: ViewModifier where V: View {
     self.imageSize = snapshotImage.size
     
     return outputImage
+  }
+  
+  public func aberratedImage() async -> UIImage? {
+    //try? await Task.sleep(nanoseconds: UInt64(0.032 * Double(NSEC_PER_SEC)))
+    //sleep(UInt32(0.032))
+    
+    
+    return createImage()
   }
   
   public func body(content: Content) -> some View {

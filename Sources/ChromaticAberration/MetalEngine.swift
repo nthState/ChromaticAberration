@@ -1,6 +1,6 @@
 //
 //  MetalEngine.swift
-//  Chromaticaberration
+//  ChromaticAberration
 //
 //  Copyright © 2022 Chris Davis, https://www.nthState.com
 //
