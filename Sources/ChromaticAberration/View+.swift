@@ -20,7 +20,7 @@ extension View {
     let bounds = CGRect(origin: .zero, size: targetSize)
     
     let window = UIWindow()
-   
+    
     window.rootViewController = controller
     window.makeKeyAndVisible()
     
@@ -39,17 +39,17 @@ extension UIView {
     let traitCollection = UITraitCollection(displayScale: 2.0)
     let format = UIGraphicsImageRendererFormat(for: traitCollection)
     
-//    let format = UIGraphicsImageRendererFormat.default()
-//    format.opaque = true
-//    format.scale = 2
+    //    let format = UIGraphicsImageRendererFormat.default()
+    //    format.opaque = true
+    //    format.scale = 2
     
     let renderer = UIGraphicsImageRenderer(bounds: bounds, format: format)
-//    return renderer.image { rendererContext in
-//      layer.render(in: rendererContext.cgContext)
-//    }
+    //    return renderer.image { rendererContext in
+    //      layer.render(in: rendererContext.cgContext)
+    //    }
     
     return renderer.image { ctx in
-        self.drawHierarchy(in: self.bounds, afterScreenUpdates: true)
+      self.drawHierarchy(in: self.bounds, afterScreenUpdates: true)
     }
   }
 }
