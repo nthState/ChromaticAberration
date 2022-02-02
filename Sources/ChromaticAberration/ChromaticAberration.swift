@@ -38,7 +38,7 @@ public struct ChromaticAberration<V>: ViewModifier where V: View {
   
   private func aberratedImage() async -> UIImage? {
     //try? await Task.sleep(nanoseconds: UInt64(0.032 * Double(NSEC_PER_SEC)))
-    sleep(UInt32(0.032))
+    //sleep(UInt32(0.032))
     let engine = MetalEngine.instance
     let snapshotImage = view.asImage()
     var texture = snapshotImage.textureFromImage(device: engine.device)

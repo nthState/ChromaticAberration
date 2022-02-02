@@ -1,0 +1,45 @@
+//
+//  ExampleSwiftUIView.swift
+//  Chromaticaberration
+//
+//  Copyright © 2022 Chris Davis, https://www.nthState.com
+//
+//  See https://github.com/nthState/ChromaticAberration/blob/master/LICENSE for license information.
+//
+
+import SwiftUI
+
+struct ExampleSwiftUIView {
+  
+}
+
+extension ExampleSwiftUIView: View {
+  
+  var body: some View {
+    content
+  }
+  
+  var content: some View {
+    HStack {
+      Image("craig", bundle: Bundle.module)
+      Text("Craig")
+        .foregroundColor(Color.red)
+    }
+    .padding()
+    .background(Color.green)
+  }
+  
+}
+  
+#if DEBUG
+struct ExampleSwiftUIView_Previews: PreviewProvider {
+  static var previews: some View {
+    Group {
+      ExampleSwiftUIView()
+      ExampleSwiftUIView()
+        .chromaticAberration(red: CGPoint(x: 10, y: 4))
+    }
+  }
+}
+#endif
+
