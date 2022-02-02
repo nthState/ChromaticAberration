@@ -36,8 +36,15 @@ struct ExampleSwiftUIView_Previews: PreviewProvider {
   static var previews: some View {
     Group {
       ExampleSwiftUIView()
+        .previewDisplayName("None")
+      
       ExampleSwiftUIView()
         .chromaticAberration(red: CGPoint(x: 10, y: 4))
+        .previewDisplayName("Red Aberration")
+      
+      ExampleSwiftUIView()
+        .chromaticAberration(green: CGPoint(x: 20, y: 0))
+        .previewDisplayName("Green Aberration")
     }
   }
 }
