@@ -1,12 +1,5 @@
-# Chris's SwiftUI Chromatic Aberration
-
-A View Modifier to shift colour
-
-## Overview
-
-```
 import SwiftUI
-import ChromaticAberration~
+import ChromaticAberration
 
 struct ExampleSwiftUIView {}
 
@@ -25,9 +18,6 @@ extension ExampleSwiftUIView: View {
     }
     .padding(10)
     .background(Color.green)
-    .chromaticAberration(red: CGPoint(x: 10, y: 4))
   }
   
 }
-
-```

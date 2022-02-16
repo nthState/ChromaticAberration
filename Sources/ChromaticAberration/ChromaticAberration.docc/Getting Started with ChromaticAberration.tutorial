@@ -1,0 +1,40 @@
+@Tutorial() {
+  @Intro(title: "Getting Started with Chromatic Aberration in SwiftUI") {
+    In this tutorial, I'll show you how to add a Chromatic Aberration effect
+    to your SwiftUI Views
+  }
+  
+  @Section(title: "Start with a View") {
+    @ContentAndMedia {
+      You can use this modifier on any SwiftUI View
+      
+      Note, this is a fairly slow process that rasterizes the view, so I recommend using on Previews only at this time.
+    }
+    
+    @Steps {
+      @Step {
+        Start of with a simple view, we have text and an image
+        
+        @Code(name: "Preview.swift", file: "01_Aberration.swift") {
+          @Image(source: "01_Aberration.png")
+        }
+      }
+      
+      @Step {
+        Import the ChromaticAberration Swift Package
+        
+        @Code(name: "Preview.swift", file: "02_Aberration.swift") {
+          
+        }
+      }
+      
+      @Step {
+        Add the ViewModifier and shift the red color
+        
+        @Code(name: "Preview.swift", file: "03_Aberration.swift") {
+          @Image(source: "03_Aberration.png")
+        }
+      }
+    }
+  }
+}

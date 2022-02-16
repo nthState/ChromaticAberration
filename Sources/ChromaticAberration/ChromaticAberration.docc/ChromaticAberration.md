@@ -1,4 +1,4 @@
-# Chris's SwiftUI Chromatic Aberration
+# ``ChromaticAberration``
 
 A View Modifier to shift colour
 
@@ -6,7 +6,7 @@ A View Modifier to shift colour
 
 ```
 import SwiftUI
-import ChromaticAberration~
+import ChromaticAberration
 
 struct ExampleSwiftUIView {}
 
@@ -31,3 +31,9 @@ extension ExampleSwiftUIView: View {
 }
 
 ```
+
+## Topics
+
+### Guides
+
+- <doc:Getting-Started-with-PreviewColorBlindness>

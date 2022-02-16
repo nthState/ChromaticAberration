@@ -9,14 +9,13 @@
 
 import SwiftUI
 
-struct ExampleSwiftUIView {
-  
-}
+struct ExampleSwiftUIView {}
 
 extension ExampleSwiftUIView: View {
   
   var body: some View {
     content
+      .padding(4)
   }
   
   var content: some View {
@@ -25,7 +24,7 @@ extension ExampleSwiftUIView: View {
       Text("Craig")
         .foregroundColor(Color.red)
     }
-    .padding()
+    .padding(10)
     .background(Color.green)
   }
   
@@ -38,6 +37,9 @@ struct ExampleSwiftUIView_Previews: PreviewProvider {
       ExampleSwiftUIView()
         .previewDisplayName("None")
       
+      ExampleSwiftUIView()
+        .chromaticAberration(red: CGPoint(x: 10, y: 4))
+        .previewDisplayName("Red Aberration")
       ExampleSwiftUIView()
         .chromaticAberration(red: CGPoint(x: 10, y: 4))
         .previewDisplayName("Red Aberration")

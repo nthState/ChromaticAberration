@@ -17,7 +17,12 @@ public extension View {
   
 }
 
-public struct AberrationConfiguration {
+/**
+ The red/green/blue parameters that you want to shift,
+ 
+ We default to 0 horizontal, 0 vertical
+ */
+internal struct AberrationConfiguration {
   let red: CGPoint
   let green: CGPoint
   let blue: CGPoint
@@ -49,10 +54,6 @@ public struct ChromaticAberration<V>: ViewModifier where V: View {
   }
   
   public func aberratedImage() async -> UIImage? {
-    //try? await Task.sleep(nanoseconds: UInt64(0.032 * Double(NSEC_PER_SEC)))
-    //sleep(UInt32(0.032))
-    
-    
     return createImage()
   }
   
