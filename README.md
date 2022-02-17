@@ -31,3 +31,8 @@ extension ExampleSwiftUIView: View {
 }
 
 ```
+
+| Before | After |
+|--------|-------|
+![Before](Sources/ChromaticAberration/ChromaticAberration.docc/Resources/Images/01_Aberration.png)|![After](Sources/ChromaticAberration/ChromaticAberration.docc/Resources/Images/03_Aberration.png)
+
