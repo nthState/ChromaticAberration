@@ -1,4 +1,4 @@
-@Tutorials(name: "aa") {
+@Tutorials(name: "Chris") {
     @Intro(title: "Guide on using Chromatic Aberration") {
         Guides on using Chromatic Aberration in SwiftUI with Composite Views
 

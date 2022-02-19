@@ -4,6 +4,12 @@ A View Modifier to shift colour
 
 ## Overview
 
+| Before | After |
+|--------|-------|
+![Before](01_Aberration.png)|![After](03_Aberration.png)
+
+
+
 ```
 import SwiftUI
 import ChromaticAberration
@@ -36,4 +42,4 @@ extension ExampleSwiftUIView: View {
 
 ### Guides
 
-- <doc:Getting-Started-with-PreviewColorBlindness>
+- <doc:Getting-Started-with-ChromaticAberration>
